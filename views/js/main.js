@@ -491,6 +491,8 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
+  // This value will not change for each pizza image so moved outside the loop.
+  // Also resolved the asychronous layout problem but I don't know why.
   var scrollPosition = document.body.scrollTop / 1250
   for (var i = 0; i < items.length; i++) {
     items[i].style.left = items[i].basicLeft + 100 * Math.sin(scrollPosition + i % 5) + 'px';
