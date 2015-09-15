@@ -1,3 +1,17 @@
+Optimizations made
+  Critical Rendering Path Optimizations
+  1) Added async property to scripts.
+  2) Added media property for print css.
+  3) Compressed images
+  4) Inlined CSS
+
+
+  Pizza Optimizations
+  1) Fixed pizza slider to choose size.
+  2) Fixed loop to move positions of pizza.
+  3) Various other micromanaging of Javascript code.
+  4) Promoted mover pizzas to layer since they should not be repainted every time.
+
 ## Website Performance Optimization portfolio project
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).

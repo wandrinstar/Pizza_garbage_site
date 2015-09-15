@@ -438,9 +438,9 @@ var resizePizzas = function(size) {
           console.log("bug in sizeSwitcher");
     }
 
-    var allPizzas = document.querySelectorAll(".randomPizzaContainer");
-
-    for(var i = 0; i < allPizzas.length; i++) {
+    var allPizzas = document.getElementsByClassName("randomPizzaContainer");
+    var numOfPizzas = allPizzas.length
+    for(var i = 0; i < numOfPizzas; i++) {
       allPizzas[i].style.width = newWidth + "%";
     }
   }
@@ -457,8 +457,8 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -491,10 +491,11 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
+  var itemsLength = items.length;
   // This value will not change for each pizza image so moved outside the loop.
   // Also resolved the asychronous layout problem but I don't know why.
   var scrollPosition = document.body.scrollTop / 1250
-  for (var i = 0; i < items.length; i++) {
+  for (var i = 0; i < itemsLength; i++) {
     items[i].style.left = items[i].basicLeft + 100 * Math.sin(scrollPosition + i % 5) + 'px';
   }
 
@@ -515,15 +516,17 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
-    var elem = document.createElement('img');
+  var elem;
+  var movingPizzas = document.getElementById("movingPizzas1");
+  for (var i = 0; i < 48; i++) {
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    movingPizzas.appendChild(elem);
   }
   updatePositions();
 });
