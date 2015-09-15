@@ -4,6 +4,7 @@ Optimizations made
   2) Added media property for print css.
   3) Compressed images
   4) Inlined CSS
+  5) Minified index.html
 
 
   Pizza Optimizations
